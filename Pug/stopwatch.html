@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head><title>Stopwatch App</title><style>body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.stopwatch {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 300px;
+}
+.time {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.button:hover {
+  background-color: #0056b3;
+}</style></head><body><div class="stopwatch"><div class="time" id="time">00:00:00</div><div class="buttons"><button class="button" id="start">Start</button><button class="button" id="stop">Stop</button><button class="button" id="reset">Reset</button></div></div><script>let startTime;
+let updatedTime;
+let difference;
+let timerId;
+let isRunning = false;
+
+const timeDisplay = document.getElementById('time');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
+const resetButton = document.getElementById('reset');
+
+function updateTime() {
+  updatedTime = new Date().getTime();
+  difference = updatedTime - startTime;
+  
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  timeDisplay.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+}
+
+function pad(number) {
+  return (number < 10 ? '0' : '') + number;
+}
+
+function startTimer() {
+  if (!isRunning) {
+    startTime = new Date().getTime() - (difference || 0);
+    timerId = setInterval(updateTime, 1000);
+    isRunning = true;
+  }
+}
+
+function stopTimer() {
+  clearInterval(timerId);
+  isRunning = false;
+}
+
+function resetTimer() {
+  clearInterval(timerId);
+  isRunning = false;
+  difference = 0;
+  timeDisplay.textContent = "00:00:00";
+}
+
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+resetButton.addEventListener('click', resetTimer);</script></body></html>

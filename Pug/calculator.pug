@@ -1,0 +1,87 @@
+doctype html
+html
+  head
+    title Calculator App
+    style.
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      .calculator {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .display {
+        font-size: 2em;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: right;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .button {
+        padding: 20px;
+        font-size: 1.5em;
+        background-color: #e0e0e0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .button:active {
+        background-color: #ccc;
+      }
+  body
+    .calculator
+      .display#display 0
+      .buttons
+        button.button(data-value="7") 7
+        button.button(data-value="8") 8
+        button.button(data-value="9") 9
+        button.button(data-value="/") /
+        button.button(data-value="4") 4
+        button.button(data-value="5") 5
+        button.button(data-value="6") 6
+        button.button(data-value="*") *
+        button.button(data-value="1") 1
+        button.button(data-value="2") 2
+        button.button(data-value="3") 3
+        button.button(data-value="-") -
+        button.button(data-value="0") 0
+        button.button(data-value=".") .
+        button.button(data-value="C") C
+        button.button(data-value="+") +
+        button.button(data-value="=") =
+
+    script.
+      const display = document.getElementById('display');
+      const buttons = document.querySelectorAll('.button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const value = button.getAttribute('data-value');
+
+          if (value === 'C') {
+            display.textContent = '0';
+          } else if (value === '=') {
+            display.textContent = eval(display.textContent);
+          } else {
+            if (display.textContent === '0') {
+              display.textContent = value;
+            } else {
+              display.textContent += value;
+            }
+          }
+        });
+      });

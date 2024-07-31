@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head><title>Random Quote Generator</title><style>body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.quote-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+}
+.quote {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+.author {
+  font-size: 1.2em;
+  color: #555;
+}
+.new-quote {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.new-quote:hover {
+  background-color: #0056b3;
+}</style></head><body><div class="quote-box"><div class="quote" id="quote"></div><div class="author" id="author"></div><button class="new-quote" id="new-quote">Generate New Quote</button></div><script>const quotes = [
+  { text: "The best way to get started is to quit talking and begin doing.", author: "Walt Disney" },
+  { text: "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.", author: "Winston Churchill" },
+  { text: "Don't let yesterday take up too much of today.", author: "Will Rogers" },
+  { text: "You learn more from failure than from success. Don’t let it stop you. Failure builds character.", author: "Unknown" },
+  { text: "It’s not whether you get knocked down, it’s whether you get up.", author: "Vince Lombardi" },
+  { text: "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you.", author: "Steve Jobs" },
+  { text: "People who are crazy enough to think they can change the world, are the ones who do.", author: "Rob Siltanen" },
+  { text: "Failure will never overtake me if my determination to succeed is strong enough.", author: "Og Mandino" },
+  { text: "Entrepreneurs are great at dealing with uncertainty and also very good at minimizing risk. That’s the classic entrepreneur.", author: "Mohnish Pabrai" },
+  { text: "We may encounter many defeats but we must not be defeated.", author: "Maya Angelou" }
+];
+
+const quoteElement = document.getElementById('quote');
+const authorElement = document.getElementById('author');
+const newQuoteButton = document.getElementById('new-quote');
+
+function generateQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+  quoteElement.textContent = `"${quote.text}"`;
+  authorElement.textContent = `- ${quote.author}`;
+}
+
+newQuoteButton.addEventListener('click', generateQuote);
+
+// Generate an initial quote when the page loads
+generateQuote();</script></body></html>

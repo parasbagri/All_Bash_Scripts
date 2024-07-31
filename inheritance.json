@@ -1,0 +1,10 @@
+{
+   "base": {
+      "greeting": "Hello"
+   },
+   "derived": {
+      "greeting": "Hello",
+      "message": "Hello, Eve!",
+      "name": "Eve"
+   }
+}

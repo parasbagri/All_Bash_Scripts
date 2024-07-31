@@ -1,0 +1,10 @@
+{
+   "keys": [
+      "age",
+      "name"
+   ],
+   "person": {
+      "age": 40,
+      "name": "David"
+   }
+}

@@ -1,0 +1,16 @@
+
+{
+   "Name1" : "paras",
+   "name2" : "Swati",
+   "Name3" : "Namra",
+   "Name4" : "Deshant",
+
+   "allName": name1+ name2... Name4
+
+   "IsValueTru": true,
+   "arr" : [1,2,3,4,5],
+  "person":{
+    "Name":"bhhbh"
+  }
+} 
+ 
